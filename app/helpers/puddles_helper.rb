@@ -1,0 +1,2 @@
+module PuddlesHelper
+end
