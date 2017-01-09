@@ -4,6 +4,7 @@ class CreatePuddles < ActiveRecord::Migration[5.0]
       t.datetime :departure_time
       t.integer :seats
       t.float :distance
+      t.integer :driver_id
 
       t.timestamps
     end
