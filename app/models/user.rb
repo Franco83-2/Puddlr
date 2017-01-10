@@ -5,5 +5,6 @@ class User < ApplicationRecord
   has_many :passengers
   has_many :puddles, through: :passengers
   has_many :profiles
+  has_many :cars
   has_secure_password
 end
