@@ -1,0 +1,13 @@
+    <%= flash[:message] if flash[:message] %>
+    <h1>Please add some information about your vehicle:</h1><br />
+    <%= form_for(@car) do |f| %>
+      <%= f.label :make %>
+      <%= f.text_field :make %><br>
+      <%= f.label :model %>
+      <%= f.text_field :model %><br>
+      <%= f.label :year %>
+      <%= f.number_field :year %><br>
+      <%= f.label :color %>
+      <%= f.text_field :color %><br>
+      <%= f.submit %>
+    <% end %>

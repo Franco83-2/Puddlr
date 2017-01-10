@@ -1,0 +1,19 @@
+    <%= flash[:message] if flash[:message] %>
+    <h1>
+
+          <%= "Welcome, #{@car.first.user.profiles.first.name}" %> <br />
+          <%= "Here is your vehicle info:" %> <br />
+          <% if 1 == 1 %>
+            <% @car.each.with_index(1) do |car, index| %>
+            <%= "#{index}. #{car.make}" %> <br>
+            <ul>
+            <li><%= car.model %></li>
+            <li><%= car.year %></li>
+            <li><%= car.color %></li>
+            </ul>
+            <%= link_to "Edit Vehicle", edit_car_path(car.id) %><br><br>
+            <% end %>
+          <% end %>
+
+            <%= link_to "Main Page", user_path(@car.first.user_id) %>
+    </h1>

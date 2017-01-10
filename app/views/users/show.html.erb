@@ -1,11 +1,11 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>User Page</title>
-  </head>
-  <body>
-    <h1>Welcome, <%= @user.profiles.first.name %></h1>
+    <h1>
+      <%= "Welcome, #{@user.profiles.first.name.capitalize}" %><br />
+      <%= link_to "View Open Puddles", puddles_path %><br />
+      <%= link_to "Create a Puddle!", new_puddle_path %><br />
+      <%= link_to "View Profile", profile_path(@user.profiles.first) %><br />
+      <%= link_to "Add Car", new_car_path %><br />
+      <%= link_to "View Car(s)", cars_path %><br />
+    </h1>
     <%= flash[:message] if flash[:message] %>
     <p>
        Here are your upcoming rides:
@@ -13,6 +13,3 @@
     <ul>
       <% #@user.driver.puddles %>
     </ul>
-
-  </body>
-</html>

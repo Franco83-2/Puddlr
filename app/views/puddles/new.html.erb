@@ -1,0 +1,11 @@
+<%= flash[:message] if flash[:message] %>
+<h1>Please set up your profile settings</h1>
+<%= form_for(@puddle) do |f| %>
+  <%= f.label :seats %>
+  <%= f.number_field :seats %><br>
+  <%= f.label :distance %>
+  <%= f.number_field :distance %><br>
+  <%= f.label :departure_time %>
+  <%= f.datetime_field :departure_time, min: DateTime.now %><br>
+  <%= f.submit %>
+<% end %>
