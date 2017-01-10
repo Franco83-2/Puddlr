@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>User Page</title>
+  </head>
+  <body>
+    <h1>Welcome, <%= @user.profiles.first.name %></h1>
+    <%= flash[:message] if flash[:message] %>
+    <p>
+       Here are your upcoming rides:
+    </p>
+    <ul>
+      <% #@user.driver.puddles %>
+    </ul>
+
+  </body>
+</html>
