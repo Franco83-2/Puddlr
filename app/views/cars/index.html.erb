@@ -1,16 +1,17 @@
     <%= flash[:message] if flash[:message] %>
-          <% if @car.first %>
+          <% if @cars && @cars.first %>
           <h1><%= "Here is your vehicle info:" %></h1> <br />
-            <% @car.each.with_index(1) do |car, index| %>
+            <% @cars.each.with_index(1) do |car, index| %>
             <%= "#{index}. #{car.make}" %> <br>
             <ul>
             <li><%= car.model %></li>
             <li><%= car.year %></li>
             <li><%= car.color %></li>
             </ul>
-            <%= link_to "Edit Vehicle", edit_car_path(car.id) %><br><br>
+            <%= link_to "Edit Vehicle", edit_user_car_path(current_user, car)  %><br><br>
+            <%= link_to "Delete Vehicle", user_car_path(current_user, car), method: :delete  %><br><br>
             <%end%>
           <% else %>
             <%= "You have no cars saved." %>
-            <%= button_to "Add a Car!", new_car_path %><br />
+            <%= button_to "Add a Car!", new_user_car_path(session[:user_id]), method: :get %><br />
           <% end %>

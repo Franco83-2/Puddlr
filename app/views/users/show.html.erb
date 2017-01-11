@@ -4,8 +4,8 @@
       <%= link_to "View Open Puddles", puddles_path %><br />
       <%= link_to "Create a Puddle!", new_puddle_path %><br />
       <%= link_to "View Profile", profile_path(@user.profiles.first) %><br />
-      <%= link_to "Add Car", new_car_path %><br />
-      <%= link_to "View Car(s)", cars_path %><br />
+      <%= link_to "Add Car", new_user_car_path(@user) %><br />
+      <%= link_to "View Car(s)", user_cars_path(@user) %><br />
 
     <%= flash[:message] if flash[:message] %>
        <% if @user.drivers.first && @user.drivers.first.puddles.where("departure_time > ?", DateTime.now) %>
