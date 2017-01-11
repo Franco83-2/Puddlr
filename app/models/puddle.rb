@@ -3,7 +3,6 @@ class Puddle < ApplicationRecord
   has_many :puddle_passengers
   has_many :passengers, through: :puddle_passengers
 
-
   def passenger_list
     self.passengers.joins(user: :profiles).pluck(:name)
   end
@@ -26,6 +25,14 @@ class Puddle < ApplicationRecord
     results << driver_address
     results << driver_phone
     results
+  end
+
+  def driver_ids
+    self.driver.user.id
+  end
+
+  def passenger_ids
+    self.passengers.pluck(:user_id)
   end
 
 end

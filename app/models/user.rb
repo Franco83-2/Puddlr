@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  belongs_to :location
+  belongs_to :location, optional: true
   has_many :drivers
   has_many :puddles, through: :drivers
   has_many :passengers

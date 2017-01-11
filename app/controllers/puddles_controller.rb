@@ -2,6 +2,7 @@ class PuddlesController < ApplicationController
   before_action :authorize_user
 
   def index
+    @puddles = Puddle.all
   end
 
   def new
@@ -34,6 +35,20 @@ class PuddlesController < ApplicationController
 
   def show
     @puddle = Puddle.find(params[:id])
+    @user = User.find(session[:user_id])
+  end
+
+  def add_passenger
+    @puddle = Puddle.find(params[:id])
+    if @puddle.save
+      new_passenger = Passenger.find_or_create_by(user_id: session[:user_id])
+      PuddlePassenger.create(passenger_id: new_passenger.id, puddle_id: @puddle.id)
+      @puddle.seats -= 1
+      @puddle.save
+      redirect_to @puddle
+    else
+      redirect_to add_passenger_path
+    end
   end
 
   def destroy
