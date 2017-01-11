@@ -1,15 +1,10 @@
     <%= flash[:message] if flash[:message] %>
     <h1>
-
-          <%= "Welcome, #{@car.user.profiles.first.name.capitalize}" %> <br />
-          <%= "Info for the selected vehicle:" %> <br />
+          <%= "Info for the selected vehicle:" %> <br />    </h1>
               <%= "#{@car.make}" %> <br />
           <ul>
           <li><%= @car.model %></li>
           <li><%= @car.year %></li>
           <li><%= @car.color %></li>
           </ul>
-          <%= link_to "Edit Vehicle", edit_car_path(@car.id) %><br />
-
-            <%= link_to "Main Page", user_path(@car.user_id) %>
-    </h1>
+          <%= link_to "Edit Vehicle", edit_car_path(@car.id) if session[:user_id] == @car.user.id %><br />

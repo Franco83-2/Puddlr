@@ -1,15 +1,33 @@
     <h1>
       <%= "Welcome, #{@user.profiles.first.name.capitalize}" %><br />
+    </h1>
       <%= link_to "View Open Puddles", puddles_path %><br />
       <%= link_to "Create a Puddle!", new_puddle_path %><br />
       <%= link_to "View Profile", profile_path(@user.profiles.first) %><br />
       <%= link_to "Add Car", new_car_path %><br />
       <%= link_to "View Car(s)", cars_path %><br />
-    </h1>
+
     <%= flash[:message] if flash[:message] %>
-    <p>
-       Here are your upcoming rides:
-    </p>
-    <ul>
-      <% #@user.driver.puddles %>
+       <% if @user.drivers.first && @user.drivers.first.puddles.where("departure_time > ?", DateTime.now) %>
+          <%= "Here are your upcoming puddles as a driver:" %>
+          <ul>
+          <% @user.drivers.first.puddles.each.with_index(1) do |puddle, index| %>
+          <%= "#{index}. #{puddle.destination}"%>
+          <%= "  Seats Remaining: #{puddle.seats}" %>
+          </ul>
+          <% end %>
+       <% else %>
+          <%= "You have no upcoming puddles as a driver." %>
+       <% end %>
+
+      <% if @user.passengers.first && @user.passengers.first.puddles.where("departure_time > ?", DateTime.now) %>
+        <%= "Here are your upcoming puddles as a passenger:" %><br />
+        <% @user.passengers.first.puddles.each.with_index(1) do |puddle, index| %>
+         <%= "#{index}. #{puddle.destination}"%><br />
+         <%= "  Seats Remaining: #{puddle.seats}" %><br />
+         <%= "  Driver: #{puddle.driver.user.profiles.first.name}" %>
+        <% end %>
+      <% else %>
+          <%= "You have no upcoming puddles as a passenger." %>
+      <% end %>
     </ul>

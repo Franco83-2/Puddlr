@@ -2,7 +2,7 @@ class CarsController < ApplicationController
   before_action :authorize_user
 
   def index
-    @car = Car.where(user_id: session[:user_id])
+    @cars = Car.where(user_id: session[:user_id])
   end
 
   def new
@@ -20,7 +20,11 @@ class CarsController < ApplicationController
   end
 
   def edit
-    @car = Car.find(params[:id])
+    if session[:user_id] == params[:id].to_i
+      @car = Car.find(params[:id])
+    else
+      redirect_to user_path(session[:user_id])
+    end
   end
 
   def update

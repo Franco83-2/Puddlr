@@ -18,9 +18,13 @@ class ProfilesController < ApplicationController
   end
 
   def edit
-    @user = User.find(session[:user_id])
-    @locations = Location.where(company_id: @user.company_id)
-    @profile = Profile.find(params[:id])
+    if session[:user_id] == params[:id].to_i
+      @user = User.find(session[:user_id])
+      @locations = Location.where(company_id: @user.company_id)
+      @profile = Profile.find(params[:id])
+    else
+      redirect_to user_path(session[:user_id])
+    end
   end
 
   def update
@@ -33,7 +37,7 @@ class ProfilesController < ApplicationController
   end
 
   def show
-    @profile = Profile.find_by(user_id: session[:user_id])
+    @profile = Profile.find(params[:id])
   end
 
   private

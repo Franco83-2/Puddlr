@@ -35,4 +35,8 @@ class Puddle < ApplicationRecord
     self.passengers.pluck(:user_id)
   end
 
+  def destination
+    Location.find(self.driver.user.profiles.first.location).name
+  end
+
 end
