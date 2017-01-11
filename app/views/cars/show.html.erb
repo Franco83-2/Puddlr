@@ -7,4 +7,5 @@
           <li><%= @car.year %></li>
           <li><%= @car.color %></li>
           </ul>
-          <%= link_to "Edit Vehicle", edit_car_path(@car.id) if session[:user_id] == @car.user.id %><br />
+          <%= link_to "Edit Vehicle", edit_user_car_path(current_user, @car) if current_user == @car.user.id %><br />
+          <%= link_to "Delete Vehicle", user_car_path(current_user, @car),  method: :delete if current_user == @car.user.id %><br />

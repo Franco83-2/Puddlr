@@ -3,10 +3,11 @@ Rails.application.routes.draw do
   resources :passengers
   resources :drivers
   resources :profiles
-  resources :users
-  resources :cars
-  resources :locations
+  resources :users do
+    resources :cars
+  end
   resources :companies
+  resources :locations
 
   root :to => 'site#index'
 
