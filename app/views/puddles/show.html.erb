@@ -7,7 +7,7 @@
   <%= "Maximum distance driver can travel for a pickup (in miles): #{@puddle.distance}" %> <br />
   <%= link_to "View Open Puddles", puddles_path %><br />
   <%= link_to "View Home Page", user_path(session[:user_id]) %><br />
-  <% if @puddle.driver_ids == session[:user_id] || @puddle.passenger_ids.any? {|id| id == session[:user_id]} %>
+  <% if @puddle.driver_id == session[:user_id] || @puddle.passenger_ids.any? {|id| id == session[:user_id]} %>
     <%= "You have booked this ride. There are currently #{@puddle.seats} seats remaining." %>
   <% else %>
     <%= button_to "Book Puddle", add_passenger_path %>

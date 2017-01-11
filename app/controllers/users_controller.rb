@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @companies = Company.all
   end
 
   def create
@@ -15,7 +16,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to new_profile_path
     else
-      redirect_to new_user_path
+      render :new
     end
   end
 
@@ -43,6 +44,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :locname, :address)
+    params.require(:user).permit(:email, :password, :password_confirmation, :company_id)
   end
 end

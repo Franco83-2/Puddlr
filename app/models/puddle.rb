@@ -27,7 +27,7 @@ class Puddle < ApplicationRecord
     results
   end
 
-  def driver_ids
+  def driver_id
     self.driver.user.id
   end
 

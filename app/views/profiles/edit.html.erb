@@ -1,5 +1,7 @@
     <%= flash[:message] if flash[:message] %>
     <%= form_for(@profile) do |f| %>
+      <%= f.label :location %>
+      <%= f.collection_select :location, @locations, :id, :name, includes_blank: true %><br>
       <%= f.label :name %>
       <%= f.text_field :name %><br>
       <%= f.label :address %>

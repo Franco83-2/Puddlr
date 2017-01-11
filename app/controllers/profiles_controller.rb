@@ -2,7 +2,9 @@ class ProfilesController < ApplicationController
   before_action :authorize_user
 
   def new
+    @user = User.find(session[:user_id])
     @profile = Profile.new
+    @locations = Location.where(company_id: @user.company_id)
   end
 
   def create
@@ -16,6 +18,8 @@ class ProfilesController < ApplicationController
   end
 
   def edit
+    @user = User.find(session[:user_id])
+    @locations = Location.where(company_id: @user.company_id)
     @profile = Profile.find(params[:id])
   end
 
@@ -35,6 +39,6 @@ class ProfilesController < ApplicationController
   private
 
   def profile_params
-    params.require(:profile).permit(:name, :address, :phone)
+    params.require(:profile).permit(:name, :address, :phone, :location)
   end
 end
