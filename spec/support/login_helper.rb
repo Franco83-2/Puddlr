@@ -8,7 +8,7 @@ module LoginHelper
     fill_in("user[email]", :with => "johncandy@mars.com")
     fill_in("user[password]", :with => "password")
     fill_in("user[password_confirmation]", :with => "password")
-    # fill_in("user[location]", :with => "Boomtown")
+    fill_in("user[company]", :with => "Boomtown")
     click_button('Create User')
   end
 
