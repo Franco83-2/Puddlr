@@ -43,7 +43,7 @@ context 'validation' do
   end
 
   it "is has a field for phone number" do
-    expect(profile.phone).to eq(1234567689)
+    expect(profile.phone).to eq("1234567689")
   end
 
   end

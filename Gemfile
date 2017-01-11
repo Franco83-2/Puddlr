@@ -40,6 +40,8 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'database_cleaner'
   gem 'rspec-rails'
+  gem "capybara"
+  gem "rack_session_access"
 end
 
 group :development do
