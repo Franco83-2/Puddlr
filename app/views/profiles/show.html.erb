@@ -1,9 +1,9 @@
     <%= flash[:message] if flash[:message] %>
-    <h1>
+    <h3>
           Welcome, <%= @profile.name.capitalize %> <br />
           Here is your profile: <br />
           <%=  @profile.name  %> <br />
           <%=  @profile.address  %> <br />
           <%=  @profile.phone  %> <br />
           <%= link_to "Edit Profile", edit_profile_path %>
-    </h1>
+    </h3>
