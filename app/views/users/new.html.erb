@@ -1,17 +1,15 @@
-<h1>New User SignUp</h1>
-<% if @user.errors %>
-  <% @user.errors.full_messages.each do |error| %>
-      Error: <%= error %> <br />
-    <% end %>
-<% end %>
-    <%= form_for(@user) do |f| %>
+<div class="container">
+<h1 class="center">Sign Up</h1>
+    <%= render 'shared/errors', model: @user %>
+    <%= form_for @user, html: {style: 'padding-bottom:50px;'} do |f| %>
       <%= f.label :company %>
-      <%= f.collection_select :company_id, @companies, :id, :name, includes_blank: true %><br>
+      <%= f.collection_select(:company_id, @companies , :id, :name) %><br>
       <%= f.label :email %>
       <%= f.text_field :email %><br>
       <%= f.label :password %>
       <%= f.password_field :password %><br>
       <%= f.label :password_confirmation %>
       <%= f.password_field :password_confirmation %><br>
-      <%= f.submit %>
+      <%= f.submit class: "waves-effect waves-light btn" %>
     <% end %>
+</div>

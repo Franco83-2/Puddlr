@@ -1,8 +1,11 @@
-    <%= flash[:message] if flash[:message] %>
+<div class="container">
+  <h1 class="center">Sign In</h1>
+<%= flash[:message] if flash[:message] %>
     <%= form_tag '/signin' do %>
       <%= label_tag :email %>
       <%= text_field_tag 'user[email]' %>
       <%= label_tag :password %>
       <%= password_field_tag 'user[password]' %>
-      <%= submit_tag "Sign In" %>
+      <%= submit_tag "Sign In", class: "waves-effect waves-light btn" %>
     <% end %>
+</div>

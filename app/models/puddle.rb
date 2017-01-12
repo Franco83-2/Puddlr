@@ -4,11 +4,15 @@ class Puddle < ApplicationRecord
   has_many :passengers, through: :puddle_passengers
 
   def passenger_list
-    self.passengers.joins(user: :profiles).pluck(:name)
+    self.passengers.joins(user: :profiles)
   end
 
   def driver_name
     self.driver.user.profiles.first.name
+  end
+
+  def formatted_departure_time
+    self.departure_time.strftime("%A - %m/%d/%Y - %I:%M %p")
   end
 
   def driver_phone
