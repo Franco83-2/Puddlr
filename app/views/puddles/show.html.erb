@@ -2,9 +2,17 @@
 <h1>
    Puddle Info <br />
 </h1>
-  Puddle Departure time: <%="#{@puddle.departure_time}" %> <br />
-  Available seats: <%="#{@puddle.seats}" %> <br />
-  Maximum distance driver can travel for a pickup (in miles): <%="#{@puddle.distance}"%> <br />
+
+<h2>Driver Info: <%= @puddle.driver_name %></h2>
+  Departure Time: <%= @puddle.formatted_departure_time %> <br />
+  Available seats:  <%= @puddle.seats %> <br />
+  Maximum distance driver can travel for a pickup (in miles): <%= @puddle.distance %> <br />
+  Current Passengers:
+  <ul>
+    <% @puddle.passenger_list.each do |passenger| %>
+      <li><%= link_to passenger.user.profiles.first.name, profile_path(passenger.user.profiles.first) %></li>
+    <% end %>
+  </ul>
   <%= link_to "View Open Puddles", puddles_path %><br />
   <%= link_to "View Home Page", user_path(session[:user_id]) %><br />
   <% if @puddle.driver_id == session[:user_id] %>

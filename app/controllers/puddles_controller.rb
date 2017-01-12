@@ -16,6 +16,7 @@ class PuddlesController < ApplicationController
     if @puddle.save
       redirect_to @puddle
     else
+
       redirect_to new_puddle_path
     end
   end
