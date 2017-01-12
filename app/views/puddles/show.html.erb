@@ -17,10 +17,10 @@
   <%= link_to "View Home Page", user_path(session[:user_id]) %><br />
   <% if @puddle.driver_id == session[:user_id] %>
     There are currently <%="#{@puddle.seats}"%> puddle seats remaining.
-    <%= button_to "Destroy this Puddle", @puddle, :method => "delete" %>
+    <%= button_to "Destroy this Puddle", @puddle, :method => "delete", class: "waves-effect waves-light btn"  %>
     <% elsif @puddle.passenger_ids.any? {|id| id == session[:user_id]} %>
     There are currently <%="#{@puddle.seats}"%> puddle seats remaining.
-    <%= button_to "Leave this Puddle", remove_passenger_path%>
+    <%= button_to "Leave this Puddle", remove_passenger_path, class: "waves-effect waves-light btn" %>
   <% else %>
-    <%= button_to "Book Puddle", add_passenger_path %>
+    <%= button_to "Book Puddle", add_passenger_path, class: "waves-effect waves-light btn" %>
   <% end %>
