@@ -1,3 +1,4 @@
+<h1 class="center">Open Puddles</h1>
 <div class="row">
 <% @puddles.each do |puddle| %>
      <div class="col s4 m4">
@@ -9,7 +10,9 @@
          <!-- <div class="card-content">
          </div> -->
          <div class="card-action">
-           <%= link_to "Puddle leaving #{puddle.formatted_departure_time} #{puddle.seats} seats remaining", puddle_path(puddle) %><br />
+           <p>Departure Time: </p> <p><%= puddle.formatted_departure_time %></p>
+           <p>Seats Remaining: </p> <p><%= puddle.seats %></p>
+           <%= link_to "See this Puddle", puddle_path(puddle) %><br />
          </div>
        </div>
      </div>

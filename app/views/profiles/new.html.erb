@@ -1,5 +1,5 @@
 <%= render 'shared/errors', model: @profile %>
-  <h1>Please set up your profile settings</h1>
+  <h1>Please add your personal details:</h1>
   <%= form_for @profile, html: {style: 'padding-bottom:50px;'} do |f| %>
   <%= f.label :location %>
   <%= f.collection_select :location, @locations, :id, :name, includes_blank: true %><br>
