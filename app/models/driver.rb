@@ -15,4 +15,21 @@ class Driver < ApplicationRecord
     most_puddles[1]
   end
 
+  def driven_puddles
+    #number of puddles driven by a user as a driver
+    puddles.where("departure_time < ?", DateTime.now).count
+  end
+
+  def total_seats
+    puddles.where("departure_time < ?", DateTime.now).sum(:seats)
+  end
+
+  def total_passengers
+    puddles.joins(:puddle_passengers).count
+  end
+
+  def butts_to_seats_ratio
+    (total_passengers / total_seats) * 100
+  end
+
 end
