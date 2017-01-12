@@ -1,15 +1,13 @@
-<div class="container">
 <h1 class="center">Sign Up</h1>
-    <%= render 'shared/errors', model: @user %>
-    <%= form_for @user, html: {style: 'padding-bottom:50px;'} do |f| %>
-      <%= f.label :company %>
-      <%= f.collection_select(:company_id, @companies , :id, :name) %><br>
-      <%= f.label :email %>
-      <%= f.text_field :email %><br>
-      <%= f.label :password %>
-      <%= f.password_field :password %><br>
-      <%= f.label :password_confirmation %>
-      <%= f.password_field :password_confirmation %><br>
-      <%= f.submit class: "waves-effect waves-light btn" %>
-    <% end %>
-</div>
+<%= render 'shared/errors', model: @user %>
+<%= form_for @user, html: {style: 'padding-bottom:50px;'} do |f| %>
+  <%= f.label :company %>
+  <%= f.collection_select(:company_id, @companies , :id, :name) %><br>
+  <%= f.label :email %>
+  <%= f.text_field :email %><br>
+  <%= f.label :password %>
+  <%= f.password_field :password %><br>
+  <%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation %><br>
+  <%= f.submit class: "waves-effect waves-light btn" %>
+<% end %>

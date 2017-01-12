@@ -54,7 +54,15 @@
     <%# end %>
   <!--/.nav-collapse -->
   <main>
-    <%= yield %>
+    <!--  Dont put page in a container if it is the index -->
+    <!--  Because we want the background to cover the entire page -->
+    <% if current_page?(root_path) %>
+      <%= yield %>
+    <% else %>
+      <div class="container">
+        <%= yield %>
+      </div>
+    <% end %>
   </main>
 
 
