@@ -1,7 +1,8 @@
 <%= flash[:message] if flash[:message] %>
 <h1>
-  <%= "Puddle Info" %><br />
+   Puddle Info <br />
 </h1>
+
 <h2>Driver Info: <%= @puddle.driver_name %></h2>
   Departure Time: <%= @puddle.formatted_departure_time %> <br />
   Available seats:  <%= @puddle.seats %> <br />
@@ -14,8 +15,12 @@
   </ul>
   <%= link_to "View Open Puddles", puddles_path %><br />
   <%= link_to "View Home Page", user_path(session[:user_id]) %><br />
-  <% if @puddle.driver_id == session[:user_id] || @puddle.passenger_ids.any? {|id| id == session[:user_id]} %>
-    <%= "You have booked this ride. There are currently #{@puddle.seats} seats remaining." %>
+  <% if @puddle.driver_id == session[:user_id] %>
+    There are currently <%="#{@puddle.seats}"%> puddle seats remaining.
+    <%= button_to "Destroy this Puddle", @puddle, :method => "delete" %>
+    <% elsif @puddle.passenger_ids.any? {|id| id == session[:user_id]} %>
+    There are currently <%="#{@puddle.seats}"%> puddle seats remaining.
+    <%= button_to "Leave this Puddle", remove_passenger_path%>
   <% else %>
     <%= button_to "Book Puddle", add_passenger_path %>
   <% end %>
