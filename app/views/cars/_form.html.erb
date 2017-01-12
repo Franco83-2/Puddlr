@@ -1,5 +1,5 @@
-<%= flash[:message] if flash[:message] %>
 <h1>Please add some information about your vehicle:</h1><br />
+<%= render 'shared/errors', model: @car %>
 <%= form_for([@user, @car]) do |f| %>
   <%= f.label :make %>
   <%= f.text_field :make %><br>
@@ -9,5 +9,5 @@
   <%= f.number_field :year %><br>
   <%= f.label :color %>
   <%= f.text_field :color %><br>
-  <%= f.submit %>
+  <%= f.submit class: "waves-effect waves-light btn" %><br><br>
 <% end %>

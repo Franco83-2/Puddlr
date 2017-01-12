@@ -12,11 +12,12 @@ class CarsController < ApplicationController
 
   def create
     @car = Car.new(car_params)
+    @user = User.find(current_user)
     @car.user_id = current_user
     if @car.save
       redirect_to user_car_path(session[:user_id], @car.id)
     else
-      redirect_to new_user_car_path(@user)
+      render :new
     end
   end
 

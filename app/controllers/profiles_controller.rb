@@ -3,17 +3,21 @@ class ProfilesController < ApplicationController
 
   def new
     @user = User.find(session[:user_id])
-    @profile = Profile.new
-    @locations = Location.where(company_id: @user.company_id)
+    if @user.profiles.first
+      redirect_to @user
+    else
+      @profile = Profile.new
+      @locations = Location.where(company_id: @user.company_id)
+    end
   end
 
   def create
     @profile = Profile.new(profile_params)
     @profile.user_id = session[:user_id]
     if @profile.save
-      redirect_to @profile
+      redirect_to user_path(session[:user_id])
     else
-      redirect_to new_profile_path
+      render :new
     end
   end
 
