@@ -15,5 +15,7 @@ Rails.application.routes.draw do
   post '/signin', to: 'sessions#create'
   delete '/signout', to: 'sessions#destroy'
   post 'puddles/:id/add_passenger', to: 'puddles#add_passenger', as: 'add_passenger'
+  post 'puddles/:id/remove_passenger', to: 'puddles#remove_passenger', as: 'remove_passenger'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
