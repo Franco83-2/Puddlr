@@ -16,6 +16,7 @@ class PuddlesController < ApplicationController
     if @puddle.save
       redirect_to @puddle
     else
+
       redirect_to new_puddle_path
     end
   end
@@ -40,7 +41,7 @@ class PuddlesController < ApplicationController
 
   def add_passenger
     @puddle = Puddle.find(params[:id])
-    if @puddle.save
+    if @puddle.valid?
       new_passenger = Passenger.find_or_create_by(user_id: session[:user_id])
       PuddlePassenger.create(passenger_id: new_passenger.id, puddle_id: @puddle.id)
       @puddle.seats -= 1
