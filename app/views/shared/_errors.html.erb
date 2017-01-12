@@ -1,0 +1,6 @@
+<% if model.errors.any? %>
+  The following errors prevented this form from being submitted:<br>
+  <% model.errors.full_messages.each do |error| %>
+        <%= error %> <br />
+      <% end %>
+  <% end %>

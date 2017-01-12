@@ -18,7 +18,8 @@ class ProfilesController < ApplicationController
   end
 
   def edit
-    if session[:user_id] == params[:id].to_i
+    @profile = Profile.find_by(user_id: session[:user_id])
+    if @profile.id == params[:id].to_i
       @user = User.find(session[:user_id])
       @locations = Location.where(company_id: @user.company_id)
       @profile = Profile.find(params[:id])

@@ -12,14 +12,41 @@
  *
  *= require_tree .
  *= require_self
- //= depend_on_asset "bootstrap/glyphicons-halflings-regular.eot"
- //= depend_on_asset "bootstrap/glyphicons-halflings-regular.woff"
- //= depend_on_asset "bootstrap/glyphicons-halflings-regular.ttf"
- //= depend_on_asset "bootstrap/glyphicons-halflings-regular.svg"
+ *= require material_icons
  */
 @import "materialize";
+@import url('https://fonts.googleapis.com/css?family=Permanent+Marker');
 /* Some Style from the Bootstrap Default Theme */
+
+
+.brand-logo {
+  margin-left: 20px;
+  font-family: 'Permanent Marker', cursive;
+}
+
+
+.background-photo {
+  margin-top: 0;
+  background-image: url(https://source.unsplash.com/kG71BXh8KFw/1600x1000/) ;
+  background-size: cover;
+  height: 1000px;
+}
+
+.headline {
+  margin-top: 0;
+  padding-top: 50px;
+}
+
 body {
-  padding-top: 70px;
-  padding-bottom: 30px;
+   display: flex;
+   min-height: 100vh;
+   flex-direction: column;
+ }
+
+ main {
+   flex: 1 0 auto;
+ }
+
+footer.page-footer {
+  margin: 0;
 }
