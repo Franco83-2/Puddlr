@@ -1,3 +1,17 @@
+<div class="row">
 <% @puddles.each do |puddle| %>
-  <%= link_to "#{puddle.driver_name}'s Puddle leaving #{puddle.formatted_departure_time} #{puddle.seats} seats remaining", puddle_path(puddle) %><br />
-<% end %>
+     <div class="col s4 m4">
+       <div class="card">
+         <div class="card-image">
+           <img src = <%=asset_path("Puddlrco.jpg")%> >
+           <span class="card-title black-text">Driver: <%=link_to " #{puddle.driver_name}", profile_path(puddle.driver_id) %></span>
+         </div>
+         <!-- <div class="card-content">
+         </div> -->
+         <div class="card-action">
+           <%= link_to "Puddle leaving #{puddle.formatted_departure_time} #{puddle.seats} seats remaining", puddle_path(puddle) %><br />
+         </div>
+       </div>
+     </div>
+   <% end %>
+ </div>
