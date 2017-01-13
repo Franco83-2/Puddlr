@@ -55,22 +55,15 @@ class PuddlesController < ApplicationController
 
     def remove_passenger
       find_puddle
-      if @puddle.driver_id == session[:user_id]
-        @passenger = Passenger.find_by(user_id: params[:id])
-        PuddlePassenger.find_by(puddle_id: @puddle.id, passenger_id: @passenger.id).destroy
-        @puddle.seats += 1
-        @puddle.save
-        flash[:message] = "Passenger removed from puddle"
-        redirect_to puddles_path and return
-      else
         @passenger = Passenger.find_by(user_id: session[:user_id])
         PuddlePassenger.find_by(puddle_id: @puddle.id, passenger_id: @passenger.id).destroy
         @puddle.seats += 1
         @puddle.save
         flash[:message] = "You have left this Puddle."
         redirect_to @puddle
-      end
     end
+
+
 
   def destroy
     find_puddle
