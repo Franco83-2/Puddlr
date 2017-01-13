@@ -1,9 +1,9 @@
     <%= flash[:message] if flash[:message] %>
-    <h3>
-          Welcome, <%= @profile.name.capitalize %> <br />
-          Here is your profile: <br />
+    <p>
           <%=  @profile.name  %> <br />
           <%=  @profile.address  %> <br />
           <%=  @profile.phone  %> <br />
-          <%= link_to "Edit Profile", edit_profile_path %>
-    </h3>
+    </p>
+          <% if @profile.user.id == current_user %>
+          <%= link_to "Edit Profile", edit_profile_path, class: "waves-effect waves-light btn" %>
+          <% end %>

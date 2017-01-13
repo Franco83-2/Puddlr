@@ -1,8 +1,6 @@
 <div class="row">
 
     <div class="col s12 m8 l9"> <!-- Note that "m8 l9" was added -->
-        <%= flash[:message] if flash[:message] %>
-
     <h1>
       Welcome, <%= "#{@user.profiles.first.name.capitalize}" %><br />
     </h1>
@@ -80,7 +78,7 @@
            <% end %>
          </div>
       <% else %>
-          You have no upcoming puddles as a passenger.
+          <h5>You have no upcoming puddles as a passenger.</h5>
       <% end %>
 
      </div>
