@@ -6,34 +6,54 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Company.create(name: "Boom Bank")
-Company.create(name: "Flatiron School")
-Location.create(address: "123 Boom St", name:"BoomyVille Location", company_id: Company.first.id)
-Location.create(address: "345 Boom St", name:"BoomTown Location", company_id: Company.first.id)
-Location.create(address: "Flatiron District", name:"Flatiron Location", company_id: Company.second.id)
-Location.create(address: "11 Broadway", name:"Financial District Location", company_id: Company.second.id)
-User.create(email: "franco@franco.franco", password: "francolegal", admin: true, company_id: Company.first.id)
-User.create(email: "joe@joe.joe", password: "joseph", admin: true, company_id: Company.second.id)
-User.create(email: "yomi@yomi.yomi", password: "yomilegal", admin: true, company_id: Company.first.id)
-Car.create(make: "Ferrari", model: "Boom", year:2099, color: "Ridiculous", user_id: User.first.id)
-Profile.create(name: "Franco", address: "234 Boom St", phone:"2125550123", location: 1, user_id: User.first.id)
-Profile.create(name: "Joe", address: "235 Boom St", phone:"2125550124", location: 2, user_id: 2)
-Profile.create(name: "Yomi", address: "235 Boom St", phone:"2125550124", location: 2, user_id: User.third.id)
-Driver.create(user_id: User.first.id)
-Driver.create(user_id: User.second.id)
-Passenger.create(user_id: User.third.id)
-Passenger.create(user_id: User.second.id)
-Puddle.create(driver_id: Driver.first.id, seats: 4, departure_time: (DateTime.now + 5))
-Puddle.create(driver_id: Driver.first.id, seats: 4, departure_time: (DateTime.now - 5))
-Puddle.create(driver_id: Driver.first.id, seats: 4, departure_time: (DateTime.now - 5))
-Puddle.create(driver_id: Driver.second.id, seats: 4, departure_time: (DateTime.now + 5))
-Puddle.create(driver_id: Driver.second.id, seats: 4, departure_time: (DateTime.now + 5))
-Puddle.create(driver_id: Driver.second.id, seats: 4, departure_time: (DateTime.now + 5))
-Puddle.create(driver_id: Driver.second.id, seats: 4, departure_time: (DateTime.now - 5))
-Puddle.create(driver_id: Driver.second.id, seats: 4, departure_time: (DateTime.now - 5))
-Puddle.create(driver_id: Driver.second.id, seats: 4, departure_time: (DateTime.now - 5))
-Puddle.create(driver_id: Driver.second.id, seats: 4, departure_time: (DateTime.now - 5))
-Puddle.create(driver_id: Driver.second.id, seats: 4, departure_time: (DateTime.now - 5))
-Puddle.create(driver_id: Driver.second.id, seats: 4, departure_time: (DateTime.now - 5))
-PuddlePassenger.create(passenger_id: Passenger.first.id, puddle_id: Puddle.first.id)
-PuddlePassenger.create(passenger_id: Passenger.second.id, puddle_id: Puddle.first.id)
+# Puddle.create(driver_id: Driver.first.id, seats: 4, departure_time: (DateTime.now + 5))
+# Puddle.create(driver_id: Driver.first.id, seats: 4, departure_time: (DateTime.now - 5))
+# Puddle.create(driver_id: Driver.first.id, seats: 4, departure_time: (DateTime.now - 5))
+# Puddle.create(driver_id: Driver.second.id, seats: 4, departure_time: (DateTime.now + 5))
+# Puddle.create(driver_id: Driver.second.id, seats: 4, departure_time: (DateTime.now + 5))
+# Puddle.create(driver_id: Driver.second.id, seats: 4, departure_time: (DateTime.now + 5))
+# Puddle.create(driver_id: Driver.second.id, seats: 4, departure_time: (DateTime.now - 5))
+# Puddle.create(driver_id: Driver.second.id, seats: 4, departure_time: (DateTime.now - 5))
+# Puddle.create(driver_id: Driver.second.id, seats: 4, departure_time: (DateTime.now - 5))
+# Puddle.create(driver_id: Driver.second.id, seats: 4, departure_time: (DateTime.now - 5))
+# Puddle.create(driver_id: Driver.second.id, seats: 4, departure_time: (DateTime.now - 5))
+# Puddle.create(driver_id: Driver.second.id, seats: 4, departure_time: (DateTime.now - 5))
+# PuddlePassenger.create(passenger_id: Passenger.first.id, puddle_id: Puddle.first.id)
+# PuddlePassenger.create(passenger_id: Passenger.second.id, puddle_id: Puddle.first.id)
+10.times do
+  Company.create(name: Faker::Company.name)
+end
+
+10.times do
+  User.create(password: "password", password_confirmation: "password", email: Faker::Internet.email, company_id: rand(1..10))
+end
+
+10.times do |i|
+  Profile.create(name: Faker::Name.name, address: "#{Faker::Address.street_address}, #{Faker::Address.city}", phone: "#{Faker::PhoneNumber.subscriber_number(10)}", user_id: i+1)
+end
+
+10.times do |i|
+  Location.create(address: "#{Faker::Address.street_address}", name: "#{Faker::Address.city}", company_id: i+1)
+  Location.create(address: "#{Faker::Address.street_address}", name: "#{Faker::Address.city}", company_id: i+1)
+  Location.create(address: "#{Faker::Address.street_address}", name: "#{Faker::Address.city}", company_id: i+1)
+end
+
+10.times do |i|
+  Driver.create(user_id: i+1)
+end
+
+10.times do |i|
+  Passenger.create(user_id: i+1)
+end
+
+20.times do |i|
+  Puddle.create(driver_id: rand(1..10), seats: 10, departure_time: (DateTime.now + rand(2..5)))
+end
+
+20.times do |i|
+  Puddle.create(driver_id: rand(1..10), seats: 10, departure_time: (DateTime.now - rand(2..10)))
+end
+
+40.times do |i|
+  PuddlePassenger.create(passenger_id: rand(1..10), puddle_id: (1..20))
+end
