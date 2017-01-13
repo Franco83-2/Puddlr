@@ -10,17 +10,20 @@
   Current Passengers:
   <ul>
     <% @puddle.passenger_list.each do |passenger| %>
-      <li><%= link_to passenger.user.profiles.first.name, profile_path(passenger.user.profiles.first) %></li>
+      <%= link_to passenger.user.profiles.first.name, profile_path(passenger.user.profiles.first) %></li>
+      <% if @puddle.driver_id == session[:user_id]%>
+          <%= link_to "Remove this passenger", remove_passenger_path(passenger.user) %>
+      <%end  %>
     <% end %>
   </ul>
   <%= link_to "View Open Puddles", puddles_path %><br />
   <%= link_to "View Home Page", user_path(session[:user_id]) %><br />
-  <% if @puddle.driver_id == session[:user_id] %>
-    There are currently <%="#{@puddle.seats}"%> puddle seats remaining.
+    <% if @puddle.driver_id == session[:user_id] %>
     <%= button_to "Destroy this Puddle", @puddle, :method => "delete" %>
     <% elsif @puddle.passenger_ids.any? {|id| id == session[:user_id]} %>
-    There are currently <%="#{@puddle.seats}"%> puddle seats remaining.
     <%= button_to "Leave this Puddle", remove_passenger_path%>
-  <% else %>
+    <% elsif @puddle.seats == 0 %>
+    NO SEATS Available in this puddle.
+    <% else %>
     <%= button_to "Book Puddle", add_passenger_path %>
-  <% end %>
+    <% end %>

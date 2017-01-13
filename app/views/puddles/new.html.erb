@@ -1,5 +1,5 @@
 <%= flash[:message] if flash[:message] %>
-<h1>Please set up your profile settings</h1>
+<h1>Please set up Puddle settings</h1>
 <%= form_for(@puddle) do |f| %>
   <%= f.label :seats %>
   <%= f.number_field :seats %><br>
