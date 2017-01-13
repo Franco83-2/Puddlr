@@ -15,7 +15,7 @@
         <%= "#{Driver.most_puddles_driver_name} has driven the most, with a total of #{Driver.most_puddles_count} puddles!" %>
       </li>
     </div>
-        <% if @user.drivers.first %>
+        <% if @user.drivers.first && !@user.drivers.first.butts_to_seats_ratio.nan? %>
     <div>
         <li>
           You have driven <%= @user.drivers.first.driven_puddles %> puddles, while helping <%= @user.drivers.first.total_passengers %> people get to work.
