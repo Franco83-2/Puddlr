@@ -21,6 +21,17 @@ $secondary-color: color("green", "base") !default;
 @import url('https://fonts.googleapis.com/css?family=Permanent+Marker');
 /* Some Style from the Bootstrap Default Theme */
 
+// IF sidebar is fixed out
+header, main, footer {
+  padding-left: 200px;
+}
+
+@media only screen and (max-width : 992px) {
+  header, main, footer {
+    padding-left: 0;
+  }
+}
+//
 
 .brand-logo {
   margin-left: 20px;

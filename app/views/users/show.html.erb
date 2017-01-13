@@ -1,11 +1,12 @@
+<div class="row">
+
+    <div class="col s12 m8 l9"> <!-- Note that "m8 l9" was added -->
+
+
     <h1>
       Welcome, <%= "#{@user.profiles.first.name.capitalize}" %><br />
     </h1>
-      <%= link_to "View Open Puddles", puddles_path %><br />
-      <%= link_to "Create a Puddle!", new_puddle_path %><br />
-      <%= link_to "View Profile", profile_path(@user.profiles.first) %><br />
-      <%= link_to "Add Car", new_user_car_path(@user) %><br />
-      <%= link_to "View Car(s)", user_cars_path(@user) %><br /><br>
+
 
     <%= flash[:message] if flash[:message] %>
        <% if @user.drivers.first && @user.drivers.first.puddles.where("departure_time > ?", DateTime.now) %>
@@ -29,7 +30,7 @@
           <% end %>
           </div>
        <% else %>
-          You have no upcoming puddles as a driver.
+          <h5>You have no upcoming puddles as a driver.</h5>
        <% end %>
 
       <% if @user.passengers.first && @user.passengers.first.puddles.where("departure_time > ?", DateTime.now) %>
@@ -56,4 +57,6 @@
       <% else %>
           You have no upcoming puddles as a passenger.
       <% end %>
-    </ul>
+
+     </div>
+    </div>
