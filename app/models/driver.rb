@@ -32,4 +32,8 @@ class Driver < ApplicationRecord
     (total_passengers / total_seats) * 100
   end
 
+  def upcoming_puddles
+   self.puddles.where("departure_time > ?", DateTime.now)
+  end
+
 end
