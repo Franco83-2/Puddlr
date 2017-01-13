@@ -43,6 +43,9 @@
   <main>
     <!--  Dont put page in a container if it is the index -->
     <!--  Because we want the background to cover the entire page -->
+    <%= if flash[:message] %>
+    <%= flash[:message] %>
+    <% end %>
     <% if current_page?(root_path) %>
       <style>
       header, main, footer {
