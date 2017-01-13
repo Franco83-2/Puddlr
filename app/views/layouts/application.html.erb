@@ -4,9 +4,11 @@
     <title>Puddlr</title>
     <%= stylesheet_link_tag "application", media: "all" %>
     <%= javascript_include_tag "application" %>
+    <!-- <%= javascript_include_tag "jquery", "application" %> -->
     <%= csrf_meta_tags %>
     <%# analytics_init if Rails.env.production? %>
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"></link>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"></link>
   </head>
   <body>
     <!--  navbar -->
@@ -43,9 +45,49 @@
     <!--  Dont put page in a container if it is the index -->
     <!--  Because we want the background to cover the entire page -->
     <% if current_page?(root_path) %>
+      <style>
+      header, main, footer {
+        padding-left: 0px;
+      }
+      </style>
       <%= yield %>
     <% else %>
       <div class="container">
+        <!-- Side-Nav baby  -->
+        <!-- <div class="col s12 m4 l3">   -->
+           <ul id="slide-out" class="side-nav fixed">
+             <li><div class="userView">
+               <div>
+                 <%=image_tag("Puddlr2.png", size: "100x100")%>
+               </div>
+               <!-- <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a> -->
+             </div></li>
+             <% if session[:user_id] %>
+              <% @user = User.find(current_user)  %>
+             <li><%= link_to "View Open Puddles", puddles_path %></li><br />
+             <li><%= link_to "Create a Puddle!", new_puddle_path %></li><br />
+             <li><%= link_to "View Your Profile", profile_path(@user.profiles.first) %></li><br />
+             <li><%= link_to "Add Car", new_user_car_path(@user) %></li><br />
+             <li><%= link_to "View Car(s)", user_cars_path(@user) %></li><br />
+             <%end%>
+             <!-- <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
+             <li><a href="#!">Second Link</a></li>
+             <li><div class="divider"></div></li>
+             <li><a class="subheader">Subheader</a></li>
+             <li><a class="waves-effect" href="#!">Third Link With Waves</a></li> -->
+           </ul>
+           <a href="#" style="display:none;" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+
+           <script>
+           $('.button-collapse').sideNav({
+               menuWidth: 200, // Default is 240
+               edge: 'left', // Choose the horizontal origin
+               closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+               draggable: true // Choose whether you can drag to open on touch screens
+             }
+           );
+           </script>
+
         <%= yield %>
       </div>
     <% end %>
@@ -57,23 +99,20 @@
             <div class="row">
               <div class="col l6 s12">
                 <h5 class="white-text">Footer Content</h5>
-                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+                <p class="grey-text text-lighten-4">Whoa! Footer stuff!</p>
               </div>
               <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Links</h5>
+                <h5 class="white-text"></h5>
                 <ul>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Contact Us</a></li>
                 </ul>
               </div>
             </div>
           </div>
           <div class="footer-copyright">
             <div class="container">
-            © 2014 Copyright Text
-            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+            © 2017 Puddlr
+            <a class="grey-text text-lighten-4 right" href="#!">API</a>
             </div>
           </div>
         </footer>
