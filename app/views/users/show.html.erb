@@ -5,29 +5,54 @@
       <%= link_to "Create a Puddle!", new_puddle_path %><br />
       <%= link_to "View Profile", profile_path(@user.profiles.first) %><br />
       <%= link_to "Add Car", new_user_car_path(@user) %><br />
-      <%= link_to "View Car(s)", user_cars_path(@user) %><br />
+      <%= link_to "View Car(s)", user_cars_path(@user) %><br /><br>
 
     <%= flash[:message] if flash[:message] %>
        <% if @user.drivers.first && @user.drivers.first.puddles.where("departure_time > ?", DateTime.now) %>
-          Here are your upcoming puddles as a driver:
-          <ul>
-          <% @user.drivers.first.puddles.each.with_index(1) do |puddle, index| %>
-          <%= "#{index}. #{puddle.destination}"%>
-          Seats Remaining: <%= "#{puddle.seats}" %>
-          </ul>
+          <h5>Here are your upcoming puddles as a driver:</h5>
+          <div class="row">
+          <% @user.drivers.first.puddles.each do |puddle| %>
+            <div class="col s4 m4">
+              <div class="card center">
+                <div class="card-image">
+                  <!-- <img src = <%=asset_path("Puddlrco.jpg")%> > -->
+                </div>
+                <!-- <div class="card-content">
+                </div> -->
+                <div class="card-action">
+                  <p>Departure Time: </p> <p><%= puddle.formatted_departure_time %></p>
+                  <p>Seats Remaining: </p> <p><%= puddle.seats %></p>
+                  <%= link_to "See this Puddle", puddle_path(puddle) %><br />
+                </div>
+              </div>
+            </div>
           <% end %>
+          </div>
        <% else %>
           You have no upcoming puddles as a driver.
        <% end %>
 
       <% if @user.passengers.first && @user.passengers.first.puddles.where("departure_time > ?", DateTime.now) %>
-        Here are your upcoming puddles as a passenger:<br />
-        <% @user.passengers.first.puddles.each.with_index(1) do |puddle, index| %>
-         <%= "#{index}. #{puddle.destination}"%><br />
-          Seats Remaining: <%="#{puddle.seats}" %><br />
-          Driver: <%= "#{puddle.driver.user.profiles.first.name}" %>
-         <%= button_to "Leave this Puddle", remove_passenger_path(puddle)%>
-        <% end %>
+        <h5>Here are your upcoming puddles as a passenger:<br /></h5>
+        <div class="row">
+        <% @user.passengers.first.puddles.each.each do |puddle| %>
+             <div class="col s4 m4">
+               <div class="card center">
+                 <div class="card-image">
+                   <!-- <img src = <%=asset_path("Puddlrco.jpg")%> > -->
+                 </div>
+                 <span class=" card-title black-text ">Driver: <%=link_to " #{puddle.driver_name}", profile_path(puddle.driver_id) %></span>
+                 <!-- <div class="card-content">
+                 </div> -->
+                 <div class="card-action">
+                   <p>Departure Time: </p> <p><%= puddle.formatted_departure_time %></p>
+                   <p>Seats Remaining: </p> <p><%= puddle.seats %></p>
+                   <%= link_to "See this Puddle", puddle_path(puddle) %><br />
+                 </div>
+               </div>
+             </div>
+           <% end %>
+         </div>
       <% else %>
           You have no upcoming puddles as a passenger.
       <% end %>
