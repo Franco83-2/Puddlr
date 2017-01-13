@@ -43,4 +43,8 @@ class Puddle < ApplicationRecord
     Location.find(self.driver.user.profiles.first.location).name
   end
 
+  # def upcoming_puddles
+  #  self.puddles.where("departure_time > ?", DateTime.now)
+  # end
+
 end

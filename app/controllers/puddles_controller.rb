@@ -2,7 +2,7 @@ class PuddlesController < ApplicationController
   before_action :authorize_user
 
   def index
-    @puddles = Puddle.all.order(departure_time: :asc)
+    @puddles = Puddle.where("departure_time > ?", DateTime.now).order(departure_time: :asc)
   end
 
   def new

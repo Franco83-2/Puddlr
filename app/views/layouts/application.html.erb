@@ -61,13 +61,16 @@
                </div>
                <!-- <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a> -->
              </div></li>
-             <% if session[:user_id] %>
+             <% if current_user %>
               <% @user = User.find(current_user)  %>
+               <% if @user.profiles.first %>
              <li><%= link_to "View Open Puddles", puddles_path %></li><br />
              <li><%= link_to "Create a Puddle!", new_puddle_path %></li><br />
-             <li><%= link_to "View Your Profile", profile_path(@user.profiles.first) %></li><br />
+               <li><%= link_to "View Your Profile", profile_path(@user.profiles.first) %></li><br />
+
              <li><%= link_to "Add Car", new_user_car_path(@user) %></li><br />
              <li><%= link_to "View Car(s)", user_cars_path(@user) %></li><br />
+             <% end %>
              <%end%>
              <!-- <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
              <li><a href="#!">Second Link</a></li>

@@ -1,18 +1,41 @@
 <div class="row">
 
     <div class="col s12 m8 l9"> <!-- Note that "m8 l9" was added -->
-
+        <%= flash[:message] if flash[:message] %>
 
     <h1>
       Welcome, <%= "#{@user.profiles.first.name.capitalize}" %><br />
     </h1>
 
+    <div>
+      Here are some stats for you:
+    <ul>
+    <div>
+      <li>
+        <%= "#{Driver.most_puddles_driver_name} has driven the most, with a total of #{Driver.most_puddles_count} puddles!" %>
+      </li>
+    </div>
+        <% if @user.drivers.first %>
+    <div>
+        <li>
+          You have driven <%= @user.drivers.first.driven_puddles %> puddles, while helping <%= @user.drivers.first.total_passengers %> people get to work.
+        </li>
+    </div>
+    <div>
+        <li>
+          You have had <%= @user.drivers.first.total_seats %> empty seats, with your capacity averaging <%= "#{@user.drivers.first.butts_to_seats_ratio}%" %>.
+        </li>
+    </div>
+        <% end %>
+    </ul>
+  </div>
 
-    <%= flash[:message] if flash[:message] %>
-       <% if @user.drivers.first && @user.drivers.first.puddles.where("departure_time > ?", DateTime.now) %>
+
+
+       <% if @user.drivers.first && @user.drivers.first.upcoming_puddles %>
           <h5>Here are your upcoming puddles as a driver:</h5>
           <div class="row">
-          <% @user.drivers.first.puddles.each do |puddle| %>
+          <% @user.drivers.first.upcoming_puddles.each do |puddle| %>
             <div class="col s4 m4">
               <div class="card center">
                 <div class="card-image">
@@ -33,10 +56,12 @@
           <h5>You have no upcoming puddles as a driver.</h5>
        <% end %>
 
-      <% if @user.passengers.first && @user.passengers.first.puddles.where("departure_time > ?", DateTime.now) %>
+
+
+      <% if @user.passengers.first && @user.passengers.first.upcoming_puddles %>
         <h5>Here are your upcoming puddles as a passenger:<br /></h5>
         <div class="row">
-        <% @user.passengers.first.puddles.each.each do |puddle| %>
+        <% @user.passengers.first.upcoming_puddles.each do |puddle| %>
              <div class="col s4 m4">
                <div class="card center">
                  <div class="card-image">

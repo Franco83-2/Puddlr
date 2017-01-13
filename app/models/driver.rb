@@ -25,11 +25,15 @@ class Driver < ApplicationRecord
   end
 
   def total_passengers
-    puddles.joins(:puddle_passengers).count
+    puddles.joins(:puddle_passengers).where("departure_time < ?", DateTime.now).count
   end
 
   def butts_to_seats_ratio
-    (total_passengers / total_seats) * 100
+    (total_passengers.to_f / total_seats.to_f).round(3) * 100
+  end
+
+  def upcoming_puddles
+   self.puddles.where("departure_time > ?", DateTime.now)
   end
 
 end
