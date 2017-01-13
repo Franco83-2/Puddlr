@@ -10,4 +10,7 @@ class Passenger < ApplicationRecord
   def favorite_driver
   end
 
+  def upcoming_puddles
+   self.puddles.where("departure_time > ?", DateTime.now)
+  end
 end
