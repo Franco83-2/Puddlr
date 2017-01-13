@@ -3,7 +3,6 @@ class DriversController < ApplicationController
   def driver_remove_passenger
     find_puddle
     @passenger = Passenger.find_by(user_id: params[:passenger_user_id])
-    binding.pry
     PuddlePassenger.find_by(puddle_id: @puddle.id, passenger_id: @passenger.id).destroy
     @puddle.seats += 1
     @puddle.save
