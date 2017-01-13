@@ -1,11 +1,16 @@
-    <%= flash[:message] if flash[:message] %>
-    <h1>
-          <%= "Info for the selected vehicle:" %> <br />    </h1>
-              <%= "#{@car.make}" %> <br />
-          <ul>
-          <li><%= @car.model %></li>
-          <li><%= @car.year %></li>
-          <li><%= @car.color %></li>
-          </ul>
-          <%= link_to "Edit Vehicle", edit_user_car_path(current_user, @car) if current_user == @car.user.id %><br />
+<h1 class="center">Car Details:</h1>
+<div class="row">
+    <div class="col s12 m6 offset-m3">
+      <div class="card center">
+        <div class="card-content car-details-card">
+          <span class="car-details-card-title"><%= "#{@car.make} #{@car.model}" %></span>
+          <p>Year: <%= @car.year %></p>
+          <p>Color: <%= @car.color %></p>
+        </div>
+        <div class="card-action">
           <%= link_to "Delete Vehicle", user_car_path(current_user, @car),  method: :delete if current_user == @car.user.id %><br />
+          <%= link_to "Edit Vehicle", edit_user_car_path(current_user, @car) if current_user == @car.user.id %><br />
+        </div>
+      </div>
+    </div>
+  </div>
