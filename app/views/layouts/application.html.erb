@@ -8,6 +8,11 @@
     <%# analytics_init if Rails.env.production? %>
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"></link>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"></link>
+    <script>
+      function showToast(message, duration){
+         Materialize.toast(message, duration);
+      }
+      </script>
   </head>
   <body>
     <!--  navbar -->
@@ -43,6 +48,7 @@
   <main>
     <!--  Dont put page in a container if it is the index -->
     <!--  Because we want the background to cover the entire page -->
+    <%= flash[:message] if flash[:message] %>
     <% if current_page?(root_path) %>
       <style>
       header, main, footer {
@@ -64,6 +70,7 @@
              <% if current_user %>
               <% @user = User.find(current_user)  %>
                <% if @user.profiles.first %>
+               <li><%= link_to @user.profiles.first.name, user_path(@user) %></li>
              <li><%= link_to "View Open Puddles", puddles_path %></li><br />
              <li><%= link_to "Create a Puddle!", new_puddle_path %></li><br />
                <li><%= link_to "View Your Profile", profile_path(@user.profiles.first) %></li><br />
@@ -94,14 +101,12 @@
       </div>
     <% end %>
   </main>
-
-
         <footer class="page-footer">
           <div class="container">
             <div class="row">
               <div class="col l6 s12">
-                <h5 class="white-text">Footer Content</h5>
-                <p class="grey-text text-lighten-4">Whoa! Footer stuff!</p>
+                <h5 class="white-text">Puddlr</h5>
+                <p class="grey-text text-lighten-4">WE ARE PUDDLR!</p>
               </div>
               <div class="col l4 offset-l2 s12">
                 <h5 class="white-text"></h5>
