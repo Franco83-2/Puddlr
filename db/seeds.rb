@@ -51,5 +51,7 @@ end
 end
 
 100.times do |i|
-  PuddlePassenger.create(passenger_id: rand(1..10), puddle_id: rand(1..100))
+  ride = PuddlePassenger.create(passenger_id: rand(1..10), puddle_id: rand(1..100))
+  puddle = Puddle.find(ride.puddle_id)
+  puddle.update(seats: puddle.seats -= 1)
 end
