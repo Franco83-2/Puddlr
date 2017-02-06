@@ -5,6 +5,7 @@
     <%= stylesheet_link_tag "application", media: "all" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%# analytics_init if Rails.env.production? %>
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"></link>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"></link>
@@ -48,7 +49,7 @@
   <main>
     <!--  Dont put page in a container if it is the index -->
     <!--  Because we want the background to cover the entire page -->
-    <%= flash[:message] if flash[:message] %>
+
     <% if current_page?(root_path) %>
       <style>
       header, main, footer {
@@ -58,6 +59,7 @@
       <%= yield %>
     <% else %>
       <div class="container">
+        <%= flash[:message] if flash[:message] %>
         <!-- Side-Nav baby  -->
         <!-- <div class="col s12 m4 l3">   -->
            <ul id="slide-out" class="side-nav fixed">
