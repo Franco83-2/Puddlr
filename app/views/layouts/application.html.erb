@@ -20,7 +20,9 @@
     <header>
       <nav>
       <div class="nav-wrapper green-lighten">
-        <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+        <% if session[:user_id] %>
+         <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+         <%end%>
         <a href="/" class="brand-logo">Puddlr</a>
         <ul id="nav-mobile" class="right">
           <!-- Dropdown Trigger -->
