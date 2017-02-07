@@ -26,10 +26,18 @@ header, main, footer {
   padding-left: 200px;
 }
 
+.button-collapse {
+  visibility: hidden;
+}
+
 @media only screen and (max-width : 992px) {
+  .button-collapse {
+    visibility: visible;
+  }
+
   header, main, footer {
     padding-left: 0;
-  }
+      }
 }
 
 
