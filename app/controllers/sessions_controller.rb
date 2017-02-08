@@ -1,8 +1,15 @@
+require 'pry'
 class SessionsController < ApplicationController
-  skip_before_action :authorize_user, only: [:new, :create]
+  skip_before_action :authorize_user, only: [:new,:demo, :create]
 
   def new
     @user = User.new
+  end
+
+  def demo
+    @user = User.find(user_id: 27)
+    session[:user_id] = @user.id
+    render @user
   end
 
   def create
