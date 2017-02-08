@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   root :to => 'site#index'
 
+  get '/demo', to: 'sessions#demo', as: 'demo'
   get '/signin', to: 'sessions#new'
   post '/signin', to: 'sessions#create'
   delete '/signout', to: 'sessions#destroy'
