@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
   def demo
     @user = User.find(27)
     session[:user_id] = @user.id
-    render @user
+    redirect_to @user
   end
 
   def create
