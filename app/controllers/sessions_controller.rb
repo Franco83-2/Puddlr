@@ -1,4 +1,3 @@
-require 'pry'
 class SessionsController < ApplicationController
   skip_before_action :authorize_user, only: [:new,:demo, :create]
 
