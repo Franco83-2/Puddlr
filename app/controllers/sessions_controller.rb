@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   end
 
   def demo
-    @user = User.find(user_id: 27)
+    @user = User.find(27)
     session[:user_id] = @user.id
     render @user
   end
