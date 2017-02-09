@@ -12,6 +12,6 @@
             <%= link_to "Delete Vehicle", user_car_path(current_user, car), method: :delete  %><br><br>
             <%end%>
           <% else %>
-            <%= "You have no cars saved." %>
-            <%= button_to "Add a Car!", new_user_car_path(session[:user_id]), method: :get %><br />
+            <h4>You have no cars saved.</h4>
+            <%= link_to "Add a Car!", new_user_car_path(session[:user_id]), class: "waves-effect waves-light btn scaler" %><br />
           <% end %>
