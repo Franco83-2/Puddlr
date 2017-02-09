@@ -46,7 +46,7 @@ header, main, footer {
 
 .background-photo {
   margin-top: 0;
-  background-image: url(<%= asset_data_uri 'empty2.jpeg' %>);
+  background-image: url(asset_path('empty2.jpg'));
   background-size: cover;
   background-position: center;
   height: 800px;
