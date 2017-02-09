@@ -30,16 +30,14 @@ header, main, footer {
   visibility: hidden;
 }
 
-@media only screen and (max-width : 992px) {
-  .button-collapse {
-    visibility: visible;
-  }
-
-  header, main, footer {
-    padding-left: 0;
-      }
+.floater {
+  -webkit-transform: translateY(-2px);
+  transform: translateY(-2px);
 }
 
+.scaler:hover {
+  transform: scale(1.1);
+}
 
 .brand-logo {
   margin-left: 20px;
@@ -68,4 +66,19 @@ body {
 
  main {
    flex: 1 0 auto;
+ }
+
+ @media only screen and (max-width : 992px) {
+   .button-collapse {
+     visibility: visible;
+   }
+
+   header, main, footer {
+     padding-left: 0;
+       }
+
+     .floater {
+       -webkit-transform: translateY(0px);
+       transform: translateY(0px);
+     }
  }

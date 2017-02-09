@@ -2,7 +2,7 @@ class Puddle < ApplicationRecord
   belongs_to :driver
   has_many :puddle_passengers
   has_many :passengers, through: :puddle_passengers
-  validates :seats, numericality: { greater_than: 0 }
+  validates :seats, numericality: { greater_than: -1 }
 
   def passenger_list
     self.passengers.joins(user: :profiles)
