@@ -14,8 +14,3 @@
 //= require jquery_ujs
 //= require materialize
 //= require_tree .
-$('.button-collapse').sideNav
-  menuWidth: 100
-  edge: 'right'
-  closeOnClick: true
-  draggable: true

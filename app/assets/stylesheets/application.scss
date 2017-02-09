@@ -44,12 +44,16 @@ header, main, footer {
   font-family: 'Permanent Marker', cursive;
 }
 
-
 .background-photo {
   margin-top: 0;
-  background-image: url(https://source.unsplash.com/kG71BXh8KFw/1600x1000/) ;
+  background-image: url(empty2.jpeg);
   background-size: cover;
-  height: 1000px;
+  background-position: center;
+  height: 800px;
+}
+
+.white-font {
+  color: #fff;
 }
 
 .headline {
@@ -81,4 +85,16 @@ body {
        -webkit-transform: translateY(0px);
        transform: translateY(0px);
      }
+ }
+
+ @-webkit-keyframes blinker {
+   from { opacity: 1.0; }
+   to { opacity: 0.0; }
+ }
+
+ .cursor {
+   -webkit-animation-name: blinker;
+   -webkit-animation-iteration-count: infinite;
+   -webkit-animation-timing-function: cubic-bezier(1.0,0,0,1.0);
+   -webkit-animation-duration: .7s;
  }
