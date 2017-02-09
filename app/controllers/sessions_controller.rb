@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   end
 
   def demo
-    @user = User.find(27)
+    @user = User.find(1)
     session[:user_id] = @user.id
     redirect_to @user
   end

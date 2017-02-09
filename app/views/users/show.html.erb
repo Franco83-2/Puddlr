@@ -34,11 +34,11 @@
           <h5>Here are your upcoming puddles as a driver:</h5>
           <div class="row">
           <% @user.drivers.first.upcoming_puddles.each do |puddle| %>
-            <div class="col s4 m4">
-              <div class="card center">
-                <div class="card-image">
-                  <!-- <img src = <%=asset_path("Puddlrco.jpg")%> > -->
-                </div>
+            <div class="col l4 m12 s12">
+              <div class="card" style="font-size:.8em">
+                <!-- <div class="card-image">
+                  <img src = <%=asset_path("Puddlrco.jpg")%> >
+                </div> -->
                 <!-- <div class="card-content">
                 </div> -->
                 <div class="card-action">
@@ -60,12 +60,12 @@
         <h5>Here are your upcoming puddles as a passenger:<br /></h5>
         <div class="row">
         <% @user.passengers.first.upcoming_puddles.each do |puddle| %>
-             <div class="col s4 m4">
-               <div class="card center">
-                 <div class="card-image">
-                   <!-- <img src = <%=asset_path("Puddlrco.jpg")%> > -->
-                 </div>
-                 <span class=" card-title black-text ">Driver: <%=link_to " #{puddle.driver_name}", profile_path(puddle.driver_id) %></span>
+             <div class="col l4 m12 s12">
+               <div class="card" style="font-size:.8em">
+                 <!-- <div class="card-image">
+                   <img src = <%=asset_path("Puddlrco.jpg")%> >
+                 </div> -->
+                 <span class="card-title black-text" style="font-size:1em">Driver: <%=link_to " #{puddle.driver_name}", profile_path(puddle.driver_id) %></span>
                  <!-- <div class="card-content">
                  </div> -->
                  <div class="card-action">

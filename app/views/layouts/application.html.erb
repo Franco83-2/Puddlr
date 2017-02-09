@@ -75,11 +75,10 @@
              <% if current_user %>
               <% @user = User.find(current_user)  %>
                <% if @user.profiles.first %>
-               <li><%= link_to @user.profiles.first.name.capitalize, user_path(@user) %></li>
+               <li><%= link_to @user.profiles.first.name.capitalize, user_path(@user) %></li><br />
              <li><%= link_to "Open Puddles", puddles_path %></li><br />
              <li><%= link_to "Create a Puddle", new_puddle_path %></li><br />
                <li><%= link_to "Your Profile", profile_path(@user.profiles.first) %></li><br />
-
              <li><%= link_to "Add Car", new_user_car_path(@user) %></li><br />
              <li><%= link_to "Your Car(s)", user_cars_path(@user) %></li><br />
              <% end %>

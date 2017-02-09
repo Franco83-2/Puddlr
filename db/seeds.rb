@@ -47,10 +47,10 @@ end
 end
 
 50.times do |i|
-  Puddle.create(driver_id: rand(1..10), seats: 5, departure_time: (DateTime.now + rand(2..5)))
+  Puddle.create(driver_id: rand(1..10), seats: 4, departure_time: (DateTime.now + rand(2..10)))
 end
 
-150.times do |i|
+200.times do |i|
   ride = PuddlePassenger.create(passenger_id: rand(1..10), puddle_id: rand(1..50))
   puddle = Puddle.find(ride.puddle_id)
   puddle.update(seats: puddle.seats -= 1)
