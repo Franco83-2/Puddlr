@@ -42,13 +42,6 @@
       </div>
     </nav>
   </header>
-     <!--  nav here -->
-
-
-    <%# if current_user && current_user.admin %>
-      <%#= link_to "New Attraction", new_attraction_path %>
-    <%# end %>
-  <!--/.nav-collapse -->
   <main>
     <!--  Dont put page in a container if it is the index -->
     <!--  Because we want the background to cover the entire page -->
@@ -63,19 +56,18 @@
     <% else %>
       <div class="container">
         <%= flash[:message] if flash[:message] %>
-        <!-- Side-Nav baby  -->
+        <!-- Side-Nav  -->
         <!-- <div class="col s12 m4 l3">   -->
            <ul id="slide-out" class="side-nav fixed">
              <li><div class="userView">
                <div>
                  <%=image_tag("Puddlr2.png", size: "100x100")%>
                </div>
-               <!-- <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a> -->
              </div></li>
              <% if current_user %>
               <% @user = User.find(current_user)  %>
                <% if @user.profiles.first %>
-               <li><%= link_to @user.profiles.first.name.capitalize, user_path(@user) %></li><br />
+               <li><%= link_to @user.profiles.first.name.titleize, user_path(@user) %></li><br />
              <li><%= link_to "Open Puddles", puddles_path %></li><br />
              <li><%= link_to "Create a Puddle", new_puddle_path %></li><br />
                <li><%= link_to "Your Profile", profile_path(@user.profiles.first) %></li><br />
@@ -83,11 +75,6 @@
              <li><%= link_to "Your Car(s)", user_cars_path(@user) %></li><br />
              <% end %>
              <%end%>
-             <!-- <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
-             <li><a href="#!">Second Link</a></li>
-             <li><div class="divider"></div></li>
-             <li><a class="subheader">Subheader</a></li>
-             <li><a class="waves-effect" href="#!">Third Link With Waves</a></li> -->
            </ul>
 
 
@@ -95,7 +82,7 @@
            $('.button-collapse').sideNav({
                menuWidth: 200, // Default is 240
                edge: 'left', // Choose the horizontal origin
-               closeOnClick: false, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+               closeOnClick: false, // leaves sidenav open
                draggable: true // Choose whether you can drag to open on touch screens
              }
            );

@@ -5,11 +5,11 @@
        <div class="card">
          <div class="card-image">
            <img src = <%=asset_path("Puddlrco.jpg")%> >
-           <span class="card-title black-text"> Driver: <%=link_to " #{puddle.driver_name}", profile_path(puddle.driver_id) %></span>
+           <span class="card-title black-text" style="font-size:1em"> Driver: <%=link_to " #{puddle.driver_name}", profile_path(puddle.driver_id) %></span>
          </div>
          <!-- <div class="card-content">
          </div> -->
-         <div class="card-action">
+         <div class="card-action" style="font-size:.8em">
            <p>Departure Time: </p> <p><%= puddle.formatted_departure_time %></p>
            <p>Seats Remaining: </p> <p><%= puddle.seats %></p>
            <%= link_to "See this Puddle", puddle_path(puddle) %><br />
