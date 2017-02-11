@@ -1,9 +1,13 @@
     <%= flash[:message] if flash[:message] %>
-    <p>
-          <%=  @profile.name  %> <br />
-          <%=  @profile.address  %> <br />
-          <%=  @profile.phone  %> <br />
-    </p>
+  <div class= "row">
+    <ul class="collection with-header col l8 m8 s8">
+        <li class="collection-header"><h3><%=  @profile.name  %> </h3></li>
+        <li class="collection-item">Address:  <%=  @profile.address  %> </li>
+        <li class="collection-item">Phone: <%=  @profile.phone  %> </li>
+    </ul>
+  </div>
           <% if @profile.user.id == current_user %>
+  <div class = "row">
           <%= link_to "Edit Profile", edit_profile_path, class: "waves-effect waves-light btn" %>
+  </div>
           <% end %>
