@@ -1,22 +1,19 @@
 <%= flash[:message] if flash[:message] %>
-<h1>
-    Puddle Info
-    <br/>
-</h1>
-
-<h2>Driver Info:
-    <%= @puddle.driver_name %></h2>
-Departure Time:
-<%= @puddle.formatted_departure_time %>
-<br/>
-Available seats:
-<%= @puddle.seats %>
-<br/>
-Maximum distance driver can travel for a pickup (in miles):
-<%= @puddle.distance %>
-<br/>
-Current Passengers:
 <div>
+<h3>
+    Puddle Data
+</h3>
+
+<div class= "row">
+  <ul class="collection with-header col l8 m8 s8">
+      <li class="collection-header"><h4>Driver: <%= @puddle.driver_name %> </h4></li>
+      <li class="collection-item">Departure Time: <%= @puddle.formatted_departure_time %></li>
+      <li class="collection-item">Available seats: <%= @puddle.seats %></li>
+      <li class="collection-item">Maximum distance driver will travel for pickup (in miles): <%= @puddle.distance %></li>
+  </ul>
+</div>
+<div>
+Current Passengers:
     <ul>
         <div class="row">
             <%  @puddle.passenger_list.collect do |passenger| %>
@@ -61,3 +58,4 @@ Current Passengers:
             </div>
             <% end %>
         </div>
+</div>

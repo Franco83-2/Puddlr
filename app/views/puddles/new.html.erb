@@ -1,11 +1,11 @@
 <%= flash[:message] if flash[:message] %>
-<h1>Create a new puddle</h1>
+<h3>Create a puddle</h3>
 <%= form_for(@puddle) do |f| %>
   <%= f.label :seats %>
   <%= f.number_field :seats %><br>
-  <%= f.label :distance %>
+  <%= f.label :distance, 'Distance in miles' %>
   <%= f.number_field :distance %><br>
   <%= f.label :departure_time %>
-  <%= f.datetime_field :departure_time, min: DateTime.now %><br>
+  <%= f.datetime_field :departure_time, min: DateTime.now.strftime("%H:%M") %><br>
   <%= f. submit class: "waves-effect waves-light btn" %>
 <% end %>

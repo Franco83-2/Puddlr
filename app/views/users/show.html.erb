@@ -1,31 +1,31 @@
 <div class="row">
 
     <div class="col s12 m8 l9"> <!-- Note that "m8 l9" was added -->
-    <h1>
+    <h3>
       Welcome, <%= "#{@user.profiles.first.name.titleize}" %><br />
-    </h1>
+    </h3>
 
     <div>
-      Here are some stats for you:
-    <ul>
-    <div>
+      Community Puddle statistics:
+    <ol class="card">
+
       <li>
         <%= "#{Driver.most_puddles_driver_name} has driven the most, with a total of #{Driver.most_puddles_count} puddles!" %>
       </li>
-    </div>
+
         <% if @user.drivers.first && !@user.drivers.first.butts_to_seats_ratio.nan? %>
-    <div>
+
         <li>
           You have driven <%= @user.drivers.first.driven_puddles %> puddles, while helping <%= @user.drivers.first.total_passengers %> people get to work.
         </li>
-    </div>
-    <div>
+
+
         <li>
           You have had <%= @user.drivers.first.total_seats %> empty seats, with your capacity averaging <%= "#{@user.drivers.first.butts_to_seats_ratio}%" %>.
         </li>
-    </div>
+
         <% end %>
-    </ul>
+    </ol>
   </div>
 
 
