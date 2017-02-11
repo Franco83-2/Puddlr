@@ -1,10 +1,13 @@
-<h1 class="center">Open Puddles</h1>
+<div>
+  <h3 class="center">
+    Open Puddle(s)
+  </h3>
 <div class="row">
 <% @puddles.each do |puddle| %>
      <div class="col l4 m12 s12">
        <div class="card">
          <div class="card-image">
-           <img src = <%=asset_path("Puddlrco.jpg")%> >
+           <img class="materialboxed" width="650" object-fit= "scale-down" src = <%=asset_path("Puddlrco.jpg")%>>
            <span class="card-title black-text" style="font-size:1em"> Driver: <%=link_to " #{puddle.driver_name}", profile_path(puddle.driver_id) %></span>
          </div>
          <!-- <div class="card-content">
@@ -18,3 +21,4 @@
      </div>
    <% end %>
  </div>
+</div>
