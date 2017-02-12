@@ -14,6 +14,9 @@
  *= require_self
  *= require material_icons
  */
+
+
+ // RUN bundle exec rake assets:precompile before pushing to heroku
 @import "materialize/components/color";
 $primary-color:#4caf50 !default;
 $secondary-color: color("green", "base") !default;
