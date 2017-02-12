@@ -1,7 +1,7 @@
 <br />
     <%= flash[:message] if flash[:message] %>
           <% if @cars && @cars.first %>
-          <h3><%= "List of Cars:" %></h3> <br />
+          <h3><%= "Your cars:" %></h3> <br />
             <% @cars.each.with_index(1) do |car, index| %>
             <div class ="card-panel">
                 <div class = "card-content">

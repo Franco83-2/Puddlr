@@ -1,13 +1,13 @@
 <br />
 <div class="row">
 
-    <div class="col s12 m8 l9"> <!-- Note that "m8 l9" was added -->
+    <div class="col s12 m12 l12"> <!-- Note that "m8 l9" was added -->
     <h3>
       Welcome, <%= "#{@user.profiles.first.name.titleize}" %><br />
     </h3>
 
     <div>
-      Community Puddle statistics:
+      <h5>Community Puddle statistics:</h5>
     <ol class="card">
 
       <li>
@@ -36,15 +36,15 @@
           <div class="row">
           <% @user.drivers.first.upcoming_puddles.each do |puddle| %>
             <div class="col l4 m12 s12">
-              <div class="card" style="font-size:.8em">
-                <!-- <div class="card-image">
-                  <img src = <%=asset_path("Puddlrco.jpg")%> >
-                </div> -->
-                <!-- <div class="card-content">
-                </div> -->
-                <div class="card-action">
-                  <p>Departure Time: </p> <p><%= puddle.formatted_departure_time %></p>
-                  <p>Seats Remaining: </p> <p><%= puddle.seats %></p>
+              <div class="card" style="font-size:1em">
+                <div class="card-action center">
+                  <p>Departure Time: </p>
+                  <ul>
+                    <li><%= puddle.formatted_departure_time_day %></li>
+                    <li><%= puddle.formatted_departure_time_date %></li>
+                    <li><%= puddle.formatted_departure_time_time %></li>
+                  </ul>
+                  <p>Seats Remaining: <%= puddle.seats %></p>
                   <%= link_to "See this Puddle", puddle_path(puddle) %><br />
                 </div>
               </div>
@@ -62,17 +62,18 @@
         <div class="row">
         <% @user.passengers.first.upcoming_puddles.each do |puddle| %>
              <div class="col l4 m12 s12">
-               <div class="card" style="font-size:.8em">
-                 <!-- <div class="card-image">
-                   <img src = <%=asset_path("Puddlrco.jpg")%> >
-                 </div> -->
-                 <span class="card-title black-text" style="font-size:1em">Driver: <%=link_to " #{puddle.driver_name}", profile_path(puddle.driver_id) %></span>
-                 <!-- <div class="card-content">
-                 </div> -->
-                 <div class="card-action">
-                   <p>Departure Time: </p> <p><%= puddle.formatted_departure_time %></p>
-                   <p>Seats Remaining: </p> <p><%= puddle.seats %></p>
-                   <%= link_to "See this Puddle", puddle_path(puddle) %><br />
+               <div class="card" style="font-size:1em">
+                 <div class="card-action center" style="font-size:.9em;;"><%=link_to "Driver: #{puddle.driver_name}", profile_path(puddle.driver_id)%></div>
+                 <div class="card-action center">
+                   <p>Departure Time: </p>
+                   <ul>
+                     <li><%= puddle.formatted_departure_time_day %></li>
+                     <li><%= puddle.formatted_departure_time_date %></li>
+                     <li><%= puddle.formatted_departure_time_time %></li>
+                   </ul>
+                   <p>Seats Remaining: <%= puddle.seats %></p>
+                   <%= link_to "See this Puddle", puddle_path(puddle) %>
+                   <br />
                  </div>
                </div>
              </div>

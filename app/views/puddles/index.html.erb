@@ -2,20 +2,25 @@
 <div>
   <h3 class="center">
     Open Puddles
-  </h3>
+  </h3> 
 <div class="row">
 <% @puddles.each do |puddle| %>
      <div class="col l4 m12 s12">
        <div class="card">
          <div class="card-image">
-           <img class="materialboxed" width="650" object-fit= "scale-down" src = <%=asset_path("Puddlrco.jpg")%>>
-           <span class="card-title black-text" style="font-size:1em"> Driver: <%=link_to " #{puddle.driver_name}", profile_path(puddle.driver_id) %></span>
+           <img class="materialboxed" width="650" object-fit= "fill" src = <%=asset_path("Puddlrco.jpg")%> />
          </div>
+           <div class="card-action center" style="font-size:1em;"> <%=link_to "Driver: #{puddle.driver_name}", profile_path(puddle.driver_id) %></div>
          <!-- <div class="card-content">
          </div> -->
-         <div class="card-action" style="font-size:.8em">
-           <p>Departure Time: </p> <p><%= puddle.formatted_departure_time %></p>
-           <p>Seats Remaining: </p> <p><%= puddle.seats %></p>
+         <div class="card-action center" style="font-size:.8em">
+           <p>Departure Time: </p>
+           <ul>
+             <li><%= puddle.formatted_departure_time_day %></li>
+             <li><%= puddle.formatted_departure_time_date %></li>
+             <li><%= puddle.formatted_departure_time_time %></li>
+           </ul>
+           <p>Seats Remaining: <%= puddle.seats %></p>
            <%= link_to "See this Puddle", puddle_path(puddle) %><br />
          </div>
        </div>

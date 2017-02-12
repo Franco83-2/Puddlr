@@ -16,6 +16,18 @@ class Puddle < ApplicationRecord
     self.departure_time.strftime("%A - %m/%d/%Y - %I:%M %p")
   end
 
+  def formatted_departure_time_day
+    self.departure_time.strftime("%A")
+  end
+
+  def formatted_departure_time_date
+    self.departure_time.strftime("%m/%d/%Y")
+  end
+
+  def formatted_departure_time_time
+    self.departure_time.strftime("%I:%M %p")
+  end
+
   def driver_phone
     self.driver.user.profiles.first.phone
   end

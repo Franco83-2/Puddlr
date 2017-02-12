@@ -15,7 +15,7 @@
  *= require material_icons
  */
  @import "materialize/components/color";
-$primary-color:#548e00 !default;
+$primary-color:#4caf50 !default;
 $secondary-color: color("green", "base") !default;
 @import "materialize";
 @import url('https://fonts.googleapis.com/css?family=Permanent+Marker');
@@ -24,6 +24,10 @@ $secondary-color: color("green", "base") !default;
 // IF sidebar is fixed out
 header, main, footer {
   padding-left: 200px;
+}
+
+.side-nav li a {
+  color: #4caf50 !important;
 }
 
 .button-collapse {
@@ -39,8 +43,14 @@ header, main, footer {
   transform: scale(1.1);
 }
 
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
+  margin-right: 0px !important;
+  text-transform: none !important;
+  color: #4caf50 !important;
+}
+
 .brand-logo {
-  margin-left: 20px;
+  margin-left: 50px;
   font-family: 'Permanent Marker', cursive;
 }
 
