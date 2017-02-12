@@ -14,20 +14,14 @@
  *= require_self
  *= require material_icons
  */
- @import "materialize/components/color";
+@import "materialize/components/color";
 $primary-color:#4caf50 !default;
 $secondary-color: color("green", "base") !default;
 @import "materialize";
 @import url('https://fonts.googleapis.com/css?family=Permanent+Marker');
-/* Some Style from the Bootstrap Default Theme */
 
-// IF sidebar is fixed out
 header, main, footer {
   padding-left: 200px;
-}
-
-.side-nav li a {
-  color: #4caf50 !important;
 }
 
 .button-collapse {
@@ -80,6 +74,10 @@ body {
 
  main {
    flex: 1 0 auto;
+ }
+
+ .side-nav li a {
+   color: #4caf50 !important;
  }
 
  @media only screen and (max-width : 992px) {
