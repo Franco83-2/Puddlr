@@ -5,7 +5,7 @@ Built by:
 
 Franco Cappitta - Github @franco84 - www.francocappitta.com
 
-Joe Sasson - Github @joesass 
+Joe Sasson - Github @joesasson
 
 Yomi Lajide - Github @joll59
 
