@@ -16,4 +16,5 @@ class User < ApplicationRecord
     presence: true,
     confirmation: true,
     length: { in: 6..24 }
+
 end

@@ -24,11 +24,11 @@
   Company.create(name: Faker::Company.name)
 end
 
-20.times do
+40.times do
   User.create(password: "password", password_confirmation: "password", email: Faker::Internet.email, company_id: rand(1..10))
 end
 
-20.times do |i|
+40.times do |i|
   Profile.create(name: Faker::Name.name, address: "#{Faker::Address.street_address}, #{Faker::Address.city}", phone: "#{Faker::PhoneNumber.subscriber_number(10)}", user_id: i+1)
 end
 
@@ -38,20 +38,20 @@ end
   Location.create(address: "#{Faker::Address.street_address}", name: "#{Faker::Address.city}", company_id: i+1)
 end
 
-20.times do |i|
+40.times do |i|
   Driver.create(user_id: i+1)
 end
 
-20.times do |i|
+40.times do |i|
   Passenger.create(user_id: i+1)
 end
 
-50.times do |i|
-  Puddle.create(driver_id: rand(1..10), seats: 4, departure_time: (DateTime.now + rand(2..10)))
+100.times do |i|
+  Puddle.create(driver_id: rand(1..10), seats: 4, distance: 5, departure_time: (DateTime.now + rand(2..30)))
 end
 
-200.times do |i|
-  ride = PuddlePassenger.create(passenger_id: rand(1..10), puddle_id: rand(1..50))
+400.times do |i|
+  ride = PuddlePassenger.create(passenger_id: rand(1..40), puddle_id: rand(1..100))
   puddle = Puddle.find(ride.puddle_id)
   puddle.update(seats: puddle.seats -= 1)
 end

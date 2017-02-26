@@ -6,7 +6,38 @@ class SessionsController < ApplicationController
   end
 
   def demo
-    @user = User.find(1)
+    @user = User.create(password: "password", password_confirmation: "password", email: "mail#{rand(1..10)}#{rand(1..10)}#{rand(1..10)}#{rand(1..10)}@mail#{rand(1..10)}#{rand(1..10)}.com", company_id: rand(1..10))
+    Profile.create(name: "Demo Demerson", address: "#{Faker::Address.street_address}, #{Faker::Address.city}", phone: "#{Faker::PhoneNumber.subscriber_number(10)}", user_id: @user.id)
+    Driver.create(user_id: @user.id)
+    Passenger.create(user_id: @user.id)
+    Car.create(user_id: @user.id, make: "Lexus", model: "ES350", year: 2015, color: "Red")
+    5.times do |i|
+      Puddle.create(driver_id: @user.id, seats: 4, distance: 5, departure_time: (DateTime.now + rand(2..30)))
+    end
+
+    puddles = Puddle.where(driver_id: @user.id)
+
+    5.times do |i|
+      ride = PuddlePassenger.create(passenger_id: rand(1..40), puddle_id: puddles[i].id)
+      puddle = Puddle.find(ride.puddle_id)
+      puddle.update(seats: puddle.seats -= 1)
+    end
+    5.times do |i|
+      ride = PuddlePassenger.create(passenger_id: rand(1..40), puddle_id: puddles[i].id)
+      puddle = Puddle.find(ride.puddle_id)
+      puddle.update(seats: puddle.seats -= 1)
+    end
+    5.times do |i|
+      ride = PuddlePassenger.create(passenger_id: rand(1..40), puddle_id: puddles[i].id)
+      puddle = Puddle.find(ride.puddle_id)
+      puddle.update(seats: puddle.seats -= 1)
+    end
+
+    20.times do |i|
+      ride = PuddlePassenger.create(passenger_id: @user.id, puddle_id: rand(1..100))
+      puddle = Puddle.find(ride.puddle_id)
+      puddle.update(seats: puddle.seats -= 1)
+    end
     session[:user_id] = @user.id
     redirect_to @user
   end
