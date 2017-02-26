@@ -36,6 +36,10 @@ header, main, footer {
   transform: translateY(-2px);
 }
 
+.scaler {
+  border-radius: 25px !important;
+}
+
 .scaler:hover {
   transform: scale(1.1);
 }
