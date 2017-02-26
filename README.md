@@ -1,12 +1,12 @@
 # README
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Puddlr is a Ruby on Rails application designed to help people find carpools to work. 
 
+Built by: 
 
-Puddlr is a carpooling thingy we made!!
+Franco Cappitta - Github @franco84 - www.francocappitta.com
 
-Team: @joesass, @joll59, @franco83-2
+Joe Sasson - Github @joesasson
 
-WE ARE PUDDLR! WE ARE PUDDLR! WE ARE PUDDLR!
+Yomi Lajide - Github @joll59
 
-join our cult at www.puddlr.co
+Join us at www.puddlr.co
